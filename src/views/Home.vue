@@ -1,18 +1,38 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <hr />
+    <the-header/>
+    <hr />
+    <input type="text" v-model="valueParent" placeholder="Texto padre">
+    <hr />
+    <child-component />
+    <hr />
+    <parent-component :message="valueParent" />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+import theHeader from '@/components/TheHeader.vue';
+import ChildComponent from '@/components/Child.vue';
+import ParentComponent from '@/components/Parent.vue';
 
 export default {
   name: 'home',
+  data() {
+    return {
+      valueParent: '',
+    };
+  },
   components: {
-    HelloWorld,
+    theHeader,
+    ChildComponent,
+    ParentComponent,
   },
 };
 </script>
+
+<style lang="css" scoped>
+  .home {
+    margin: 10px;
+  }
+</style>
